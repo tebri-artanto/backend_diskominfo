@@ -43,9 +43,6 @@ app.get("/", (req, res) => {
 });
 
 const PORT = process.env.PORT || 8000;
-// app.listen(PORT, () => {
-//     console.log("Server is up and listening on " + PORT);
-// });
 app.listen(PORT, () => {
-    console.log(`Server is up and listening on \x1b]8;;http://localhost:${PORT}\x1b\\http://localhost:${PORT}\x1b]8;;\x1b\\`);
+    console.log("Server is up and listening on " + PORT);
 });
