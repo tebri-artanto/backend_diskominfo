@@ -1,0 +1,36 @@
+{
+  "name": "backend_diskominfo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.523.0",
+    "@aws-sdk/s3-request-presigner": "^3.525.0",
+    "axios": "^1.6.7",
+    "bcrypt": "^5.1.1",
+    "body-parse": "^0.1.0",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "dateformat": "^5.0.3",
+    "dotenv": "^16.4.5",
+    "express": "^4.18.2",
+    "form-data": "^4.0.0",
+    "http-status": "^1.7.4",
+    "joi": "^17.12.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongodb": "^6.3.0",
+    "mongoose": "^8.2.0",
+    "multer": "^1.4.5-lts.1",
+    "nodemon": "^3.1.0",
+    "promisify": "^0.0.3",
+    "sharp": "^0.33.2",
+    "stream": "^0.0.2",
+    "util": "^0.12.5"
+  }
+}
