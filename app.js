@@ -20,20 +20,6 @@ require("./module/database/mongodb");
 
 // Enable CORS
 app.use(cors());
-
-// Connect to MongoDB
-// mongoose.connect(process.env.DATABASE)
-//   .then(() => {
-//     console.log('Connected to MongoDB');
-//     // Start the server
-//     app.listen(process.env.PORT, () => {
-//       console.log(`Server is running on port ${process.env.PORT}`);
-//     });
-//   })
-//   .catch((error) => {
-//     console.error('Failed to connect to MongoDB', error);
-//   });
-
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -57,6 +43,9 @@ app.get("/", (req, res) => {
 });
 
 const PORT = process.env.PORT || 8000;
+// app.listen(PORT, () => {
+//     console.log("Server is up and listening on " + PORT);
+// });
 app.listen(PORT, () => {
-    console.log("Server is up and listening on " + PORT);
+    console.log(`Server is up and listening on \x1b]8;;http://localhost:${PORT}\x1b\\http://localhost:${PORT}\x1b]8;;\x1b\\`);
 });
