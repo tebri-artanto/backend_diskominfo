@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 const Response = require("../model/Response");
 const User = require("../model/user");
 const userValidator = require("../utils/UserValidator");
-const logInValidator = require("../Utils/LoginValidator.js");
+const logInValidator = require("../utils/LoginValidator");
 const bcrypt = require("../utils/bcrypt");
 const { getSignedUrl } = require('@aws-sdk/s3-request-presigner')
 const {
