@@ -39,9 +39,9 @@ const uploadImage = async (req, res) => {
   const { originalname, buffer, mimetype } = req.file
   const { activity, date, owner } = req.body
   
-  const compressedImage = await sharp(buffer)
-    .resize({ width: 500, fit: 'contain' })
-    .toBuffer()
+  // const compressedImage = await sharp(buffer)
+  //   .resize({ width: 500, fit: 'contain' })
+  //   .toBuffer()
 
   const generateRandomName = () => {
     const characters =
@@ -58,11 +58,10 @@ const uploadImage = async (req, res) => {
     .split('.')
     .pop()}`
   console.log(imageName)
-    console.log(owner)
   const params = {
     Bucket: 'image-storage-diskominfo',
     Key: imageName,
-    Body: compressedImage,
+    Body: buffer,
     ContentType: mimetype
   }
 
