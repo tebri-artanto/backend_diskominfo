@@ -36,12 +36,13 @@ const upload = multer({
 })
 
 const uploadImage = async (req, res) => {
+  try {
   const { originalname, buffer, mimetype } = req.file
   const { activity, date, owner } = req.body
   
-  // const compressedImage = await sharp(buffer)
-  //   .resize({ width: 500, fit: 'contain' })
-  //   .toBuffer()
+  const compressedImage = await sharp(buffer)
+    .resize({ width: 500, fit: 'contain' })
+    .toBuffer()
 
   const generateRandomName = () => {
     const characters =
@@ -58,10 +59,11 @@ const uploadImage = async (req, res) => {
     .split('.')
     .pop()}`
   console.log(imageName)
+    console.log(owner)
   const params = {
     Bucket: 'image-storage-diskominfo',
     Key: imageName,
-    Body: buffer,
+    Body: compressedImage,
     ContentType: mimetype
   }
 
@@ -83,7 +85,7 @@ const uploadImage = async (req, res) => {
   await ownerTemp.save()
 
 
-  try {
+  
     console.log(result)
     res.status(200).json({ message: 'Image uploaded successfully' })
   } catch (error) {
