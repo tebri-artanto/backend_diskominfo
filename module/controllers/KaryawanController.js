@@ -92,13 +92,13 @@ const {
   const deleteKaryawan = async (req, res) => {
     let response = null
     try {
-      const karyawan = await Karyawan.findById(req.params.id)
-      const deleteObjectParams = {
-        Bucket: 'image-storage-diskominfo',
-        Key: karyawan.fileUrl
-      }
-      const command = new DeleteObjectCommand(deleteObjectParams)
-      await s3Client.send(command)
+      // const karyawan = await Karyawan.findById(req.params.id)
+      // const deleteObjectParams = {
+      //   Bucket: 'image-storage-diskominfo',
+      //   Key: karyawan.fileUrl
+      // }
+      // const command = new DeleteObjectCommand(deleteObjectParams)
+      // await s3Client.send(command)
       await Karyawan.findByIdAndDelete(req.params.id)
       response = new Response.Success(false, 'Karyawan deleted successfully')
       res.status(200).json({ message: 'Karyawan deleted successfully' })

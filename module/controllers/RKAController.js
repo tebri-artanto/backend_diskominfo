@@ -116,13 +116,13 @@ const updateRKA = async (req, res) => {
 const deleteRKA = async (req, res) => {
   let response = null
   try {
-    const rka = await RKA.findById(req.params.id)
-    const deleteObjectParams = {
-      Bucket: 'image-storage-diskominfo',
-      Key: rka.fileUrl
-    }
-    const command = new DeleteObjectCommand(deleteObjectParams)
-    await s3Client.send(command)
+    // const rka = await RKA.findById(req.params.id)
+    // const deleteObjectParams = {
+    //   Bucket: 'image-storage-diskominfo',
+    //   Key: rka.fileUrl
+    // }
+    // const command = new DeleteObjectCommand(deleteObjectParams)
+    // await s3Client.send(command)
     await RKA.findByIdAndDelete(req.params.id)
     response = new Response.Success(false, 'RKA deleted successfully')
     res.status(200).json({ message: 'RKA deleted successfully' })

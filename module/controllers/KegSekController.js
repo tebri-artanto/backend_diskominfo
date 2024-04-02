@@ -91,13 +91,13 @@ const updateKegSek = (req, res) => {
 const deleteKegSek = async (req, res) => {
   let response = null
   try {
-    const kegsek = await KegSek.findById(req.params.id)
-    const deleteObjectParams = {
-      Bucket: 'image-storage-diskominfo',
-      Key: kegsek.fileUrl
-    }
-    const command = new DeleteObjectCommand(deleteObjectParams)
-    await s3Client.send(command)
+    // const kegsek = await KegSek.findById(req.params.id)
+    // const deleteObjectParams = {
+    //   Bucket: 'image-storage-diskominfo',
+    //   Key: kegsek.fileUrl
+    // }
+    // const command = new DeleteObjectCommand(deleteObjectParams)
+    // await s3Client.send(command)
     await KegSek.findByIdAndDelete(req.params.id)
     response = new Response.Success(false, 'KegSek deleted successfully')
     res.status(200).json({ message: 'KegSek deleted successfully' })

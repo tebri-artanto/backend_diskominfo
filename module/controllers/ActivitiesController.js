@@ -125,18 +125,21 @@ const updateActivity = (req, res) => {
 // Controller for deleting activity
 const deleteActivity = async (req, res) => {
   let response = null
+  console.log(req.params.id)
   try {
-    const activity = await Activities.findById(req.params.id)
-    const deleteObjectParams = {
-      Bucket: 'image-storage-diskominfo',
-      Key: activity.imgUrl
-    }
-    const command = new DeleteObjectCommand(deleteObjectParams)
-    await s3Client.send(command)
+    // const activity = await Activities.findById(req.params.id)
+    // console.log(activity.imgUrl)
+    // const deleteObjectParams = {
+    //   Bucket: 'image-storage-diskominfo',
+    //   Key: activity.imgUrl
+    // }
+    // const command = new DeleteObjectCommand(deleteObjectParams)
+    // await s3Client.send(command)
     await Activities.findByIdAndDelete(req.params.id)
     response = new Response.Success(false, 'Activity deleted successfully')
     res.status(200).json({ message: 'Activity deleted successfully' })
   } catch (error) {
+    console.error(error)
     res.status(500).json({ error: 'Internal server error' })
   }
 }

@@ -109,18 +109,22 @@ const updateDPA = async (req, res) => {
 // Controller for deleting judul
 const deleteDPA = async (req, res) => {
   let response = null
+  console.log(req.params.id)
   try {
     const dpa = await DPA.findById(req.params.id)
-    const deleteObjectParams = {
-      Bucket: 'image-storage-diskominfo',
-      Key: dpa.fileUrl
-    }
-    const command = new DeleteObjectCommand(deleteObjectParams)
-    await s3Client.send(command)
+    console.log(dpa.fileUrl)
+    // const deleteObjectParams = {
+    //   Bucket: 'image-storage-diskominfo',
+    //   Key: dpa.fileUrl
+    // }
+    // console.log(deleteObjectParams)
+    // const command = new DeleteObjectCommand(deleteObjectParams)
+    // await s3Client.send(command)
     await DPA.findByIdAndDelete(req.params.id)
     response = new Response.Success(false, 'DPA deleted successfully')
     res.status(200).json({ message: 'DPA deleted successfully' })
   } catch (error) {
+    console.error(error)
     res.status(500).json({ error: 'Internal server error' })
   }
 }

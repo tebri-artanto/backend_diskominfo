@@ -8,6 +8,6 @@ router.post("/upload", DPAController.upload ,DPAController.uploadFile);
 router.get("/getAll", DPAController.getAllDPA);
 router.get("/:id", DPAController.getDPA);
 router.put("/update/:id", DPAController.updateDPA);
-router.delete("/delete/:id", DPAController.deleteDPA);
+router.delete("/:id", DPAController.deleteDPA);
 
 module.exports = router;
