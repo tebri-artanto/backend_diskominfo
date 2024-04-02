@@ -13,6 +13,7 @@ const DataAsetRoutes = require('./module/routes/DataAsetRoutes');
 const DKKRoutes = require('./module/routes/DKKRoutes');
 const DBHCHTRoutes = require('./module/routes/DBHCHTRoutes');
 const KaryawanRoutes  = require('./module/routes/KaryawanRoutes');
+const RKARoutes = require('./module/routes/RKARoutes');
 const app = express();
 
 dotenv.config();
@@ -33,7 +34,7 @@ app.use('/dataaset', DataAsetRoutes);
 app.use('/dkk', DKKRoutes);
 app.use('/dbhcht', DBHCHTRoutes);
 app.use('/karyawan', KaryawanRoutes);
-
+app.use('/rka', RKARoutes);
 
 // Define routes
 app.get("/", (req, res) => {
