@@ -110,5 +110,23 @@ const logIn = async (req, res) => {
     }
   };
 
-module.exports = { signUp, showAllUsers, logIn, getUserActivities };
+const  getUserById = async (req, res) => {
+  let response = null;
+  try{
+    const { userId } = req.params;
+    const user = await User.findById(userId);
+    if(!user){
+      response = new Response.Error(true, "User not found");
+      res.status(httpStatus.NOT_FOUND).json(response);
+      return;
+    }
+    response = new Response.Success(false, "User retrieved successfully", user);
+    res.status(httpStatus.OK).json(response);
+  }catch(error){
+    response = new Response.Error(true, error.message);
+    res.status(httpStatus.BAD_REQUEST).json(response);
+  }
+}
+
+module.exports = { signUp, showAllUsers, logIn, getUserActivities, getUserById };
 
