@@ -42,6 +42,17 @@ const showAllUsers = async (req, res) => {
   let response = null;
   try {
     const users = await User.find().populate("activities");
+    for (const user of users) {
+      for (const activity of user.activities) {
+        const getObjectParams = {
+          Bucket: 'image-storage-diskominfo',
+          Key: activity.imgUrl
+        }
+        const command = new GetObjectCommand(getObjectParams)
+        const url = await getSignedUrl(s3Client, command, { expiresIn: 3600 })
+        activity.imgUrl = url
+      }
+    }
     response = new Response.Success(false, "Users retrieved successfully", users);
     res.status(httpStatus.OK).json(response);
   } catch (error) {

@@ -26,7 +26,7 @@ const {
   
   const addKaryawan = async (req, res) => {
     try {
-    //   const { originalname, buffer, mimetype } = req.file
+    
       const { nama, nip  } = req.body
   
       const karyawan = new Karyawan({
