@@ -3,7 +3,7 @@ const router = new express.Router();
 const DPAController = require("../controllers/DPAController");
 const auth = require("../middleware/requireAuth");
 
-// router.use(auth);
+router.use(auth);
 router.post("/upload", DPAController.upload ,DPAController.uploadFile);
 router.get("/getAll", DPAController.getAllDPA);
 router.get("/:id", DPAController.getDPA);

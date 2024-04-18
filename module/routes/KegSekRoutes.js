@@ -3,7 +3,7 @@ const router = new express.Router();
 const KegSekController = require("../controllers/KegSekController");
 const auth = require("../middleware/requireAuth");
 
-// router.use(auth);
+router.use(auth);
 router.post("/upload", KegSekController.upload ,KegSekController.addData);
 router.get("/getAll", KegSekController.getAllKegSek);
 router.get("/:id", KegSekController.getKegSek);

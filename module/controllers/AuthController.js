@@ -117,7 +117,7 @@ const logIn = async (req, res) => {
       res.status(httpStatus.OK).json(response);
     } catch (error) {
       response = new Response.Error(true, error.message);
-      res.status(httpStatus.BAD_REQUEST).json(response);
+      res.status(httpStatus.BAD_REQUEST).json(res ponse);
     }
   };
 
